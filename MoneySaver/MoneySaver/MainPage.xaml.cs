@@ -1,0 +1,38 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Xamarin.Forms;
+
+namespace MoneySaver
+{
+    // Learn more about making custom code visible in the Xamarin.Forms previewer
+    // by visiting https://aka.ms/xamarinforms-previewer
+    [DesignTimeVisible(false)]
+    public partial class MainPage : ContentPage
+    {
+        public MainPage()
+        {
+            InitializeComponent();
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            using (SQLite.SQLiteConnection connection = new SQLite.SQLiteConnection(App.ListOfExpenses))
+            {
+                connection.CreateTable<Expenses>();
+
+                var expenses = connection.Table<Expenses>().ToList();
+
+                ListOfExpenses.ItemsSource = expenses;
+            }
+        }
+        private void ToolbarItem_Activated(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new AddingExpensePage());
+        }
+    }
+}
