@@ -24,11 +24,10 @@ namespace MoneySaver
             using (SQLite.SQLiteConnection connection = new SQLite.SQLiteConnection(App.ListOfExpenses))
             {
                 connection.CreateTable<Expenses>();
-
-                var expenses = connection.Table<Expenses>().ToList();
-
+                
+                var expenses = connection.Table<Expenses>();
                 ListOfExpenses.ItemsSource = expenses;
-            }
+            }   
         }
         private void ToolbarItem_Activated(object sender, EventArgs e)
         {

@@ -9,6 +9,5 @@ namespace MoneySaver
         int Id { get; set; }
         string Name { get; set; }
         string Amount { get; set; }
-        double TotalExpenses { get; set; }
     }
 }

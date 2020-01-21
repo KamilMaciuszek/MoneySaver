@@ -14,6 +14,5 @@ namespace MoneySaver
         public string Amount { get; set; } 
 
         public string Name { get; set; }
-        public double TotalExpenses { get; set; }
     }
 }

@@ -7,14 +7,16 @@
              x:Class="MoneySaver.AddingExpensePage">
     
     <StackLayout Margin="10,30,10,0">
-        
-        <Label x:Name="TotalAmount"  Text="0" FontSize="50" TextColor="Orange"/>
-        
-        <Entry x:Name="AmountEntry" Keyboard="Numeric" Placeholder="Insert the amount"/>
 
+        <Label Text="Total Expenses: " FontSize="50" TextColor="Orange"/>
+
+        <Label x:Name="TotalAmount"  Text="0"  FontSize="50" TextColor="Orange"/>
+
+        <Entry x:Name="AmountEntry" Keyboard="Numeric"  Placeholder="Insert the amount"/>
+        
         <Entry x:Name="NameEntry" Placeholder="Insert the Name of Expense"/>
 
-        <Button Text="Add Expense"
+        <Button x:Name="button" Text="Add Expense"
                 Clicked="Button_Clicked"/>
         
     </StackLayout>
