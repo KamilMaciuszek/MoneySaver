@@ -18,6 +18,8 @@
 
         <Button x:Name="button" Text="Add Expense"
                 Clicked="Button_Clicked"/>
-        
+                
+        <Button x:Name="DeleteBtn" Text="Reset total expenses"
+                        Clicked="DeleteBtn_OnClicked"/>
     </StackLayout>
 </ContentPage>

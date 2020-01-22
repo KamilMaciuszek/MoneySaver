@@ -38,16 +38,23 @@ namespace MoneySaver
 
             using (SQLite.SQLiteConnection connection = new SQLite.SQLiteConnection(App.ListOfExpenses))
             {
-                connection.CreateTable<Expenses>();
+                connection.CreateTable<Expenses>(); 
                 var numberOfRows = connection.Insert(expenses);
 
 
-                if (numberOfRows > 0) { DisplayAlert("The expense was added", "The monthly budget left is: ", "Confirm"); }
+                if (numberOfRows > 0) { DisplayAlert("The expense was added", "Total amount has increased. ", "Confirm",Application.Current.Properties["AmountAfterAdding"].ToString()); }
                 else
                     DisplayAlert("Something gone wrong", "Try again ", "Confirm");
             }
             AmountEntry.Text = string.Empty;
             NameEntry.Text = string.Empty;
+        }
+
+        private void DeleteBtn_OnClicked(object sender, EventArgs e)
+        {
+            Application.Current.Properties["AmountAfterAdding"] = 0;
+            Application.Current.SavePropertiesAsync();
+            TotalAmount.Text = Application.Current.Properties["AmountAfterAdding"].ToString();
         }
     }
 }
